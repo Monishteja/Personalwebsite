@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo">Monish Teja Kolli</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">Monish Teja Kolli</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="./assets/profilepic.jpg" class="picture" alt="profile picture" />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Monish Teja Kolli</h1>
+        <p class="section__text__p2">Cyber Security Specialist</p>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2"
+            onclick="window.open('./assets/resume.docx')"
+          >
+            Download CV
+          </button>
+          <!-- <button class="btn btn-color-1" onclick="location.href='#contact'">
+            Contact Info
+          </button> -->
+          <img
+            src="./assets/linkedin.png"
+            alt="My LinkedIn profile"
+            class="icon linkedin"
+            onclick="location.href='https://www.linkedin.com/in/monish-teja-kolli-ba717623a'"
+          />
+        </div>
+        <!-- <div id="socials-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='https://www.linkedin.com/in/monish-teja-kolli-ba717623a'"
+          />
+          <img
+            src="./assets/github.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='https://github.com/'"
+          />
+        </div> -->
+      </div>
+    </section>
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <!-- <div class="section__pic-container">
+          <img
+            src="./assets/security.png"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div> -->
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="./assets/experience.png"
+                alt="Experience icon"
+                class="icon"
+              />
+              <h3>Experience</h3>
+              <p> Internships <br />West Advanced Technologies Inc (WATI) - Security Analyst and Penetration Testing Intern <br><br /> Terra Automation - Electronics and Robotics Intern</p>
+            </div>
+            <div class="details-container">
+              <img
+                src="./assets/education.png"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Education</h3>
+              <p>B.tech Computer Science and Engineering <br/>(GITAM Deemed to be University)<br/><br/>M.Sc. Masters Degree in Informatics - Information Security Management <br/>(Northeastern University)</p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>
+              Passionate <b>Computer Science and informatics specialist </b> with focus on <b>Cyber security </b> adept at creating innovative techniques, 
+              and making them robust and scalable. Skilled in multiple technologies, and Risk mitigation techniques Highly motivated and results-driven, 
+              with the capacity to work and grow in a committed team. Completed an internship as Security Analyst and Penetration Testing Intern at WATI.
+            </p>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#experience'"
+      />
+    </section>
+    <section id="experience">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Experience</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <h2 class="experience-sub-title">Technical Skills</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Python</h3>
+                  <!-- <p>Experienced</p> -->
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>HTML</h3>
+                  <!-- <p>Experienced</p> -->
+                </div>
+              </article><br/>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>CSS</h3>
+                  <!-- <p>Intermediate</p> -->
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>JavaScript</h3>
+                  <!-- <p>Basic</p> -->
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Amazon AWS </h3>
+                  <!-- <p>Basic</p> -->
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>MY SQL</h3>
+                  <!-- <p>Intermediate</p> -->
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="experience-sub-title">Penetration Testing Tools</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Kali linux</h3>
+                  <!-- <p>Basic</p> -->
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Brup Suit</h3>
+                  <!-- <p>Intermediate</p> -->
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Metasploit</h3>
+                  <!-- <p>Intermediate</p> -->
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>ZAP</h3>
+                  <!-- <p>Intermediate</p> -->
+                </div>
+              </article><br/>
+
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Nmap</h3>
+                  <!-- <p>Intermediate</p> -->
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Wireshark</h3>
+                  <!-- <p>Intermediate</p> -->
+                </div>
+              </article>
+            </div>
+          </div> 
+
+          <div class="details-container">
+            <h2 class="experience-sub-title">Security Frameworks</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>NIST CSF</h3>
+                  <!-- <p>Experienced</p> -->
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>ISO 2700</h3>
+                  <!-- <p>Experienced</p> -->
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>OWASP</h3>
+                  <!-- <p>Intermediate</p> -->
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Security risk management</h3>
+                  <!-- <p>Basic</p> -->
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Fundamentals of Cyber laws </h3>
+                  <!-- <p>Basic</p> -->
+                </div>
+              </article>
+            </div>
+          </div>
+
+
+          <div class="details-container">
+            <h2 class="experience-sub-title">Engineering Skills</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Software development methologies</h3>
+                  <!-- <p>Experienced</p> -->
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Software testing methologies</h3>
+                  <!-- <p>Experienced</p> -->
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Optimization techniques</h3>
+                  <!-- <p>Intermediate</p> -->
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Engineering Economics and management</h3>
+                  <!-- <p>Basic</p> -->
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#projects'"
+      />
+    </section>
+    <section id="projects">
+      <p class="section__text__p1">Browse My Recent</p>
+      <h1 class="title">Projects</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <h2 class="experience-sub-title project-title">Flipkart Cloud Security</h2>
+            <p>The aim was to fortify Flipkart's security infrastructure, we leverage NIST CSF and Amazon Web Services (AWS) as the cornerstone for creating a 
+              thorough security plan for Flipkart. To improve web application's security posture and defend against 
+              various cyberthreats, AWS provides an array of potent security tools and services. By utilizing 
+              these technologies, we hope to develop a security architecture that not only fixes the flaws brought 
+              to light by the 2021 hack, but also foresees and reduces such threats in the future.
+               By addressing the vulnerabilities that led to the 2021 breach and implementing a proactive security strategy, 
+               we seek to enhance Flipkart's resilience against future cyber threats.</p>
+            
+          </div>
+          <div class="details-container color-container">
+            <h2 class="experience-sub-title project-title">Web application VAPT assesment</h2>
+            <p>The primary target was to Perform a vulnerability assessment and penetration testing (VAPT) on a web application to identify and mitigate potential risks. 
+              A thorough method for finding, evaluating, and addressing security flaws in a web application is called VAPT. Penetration testing goes beyond vulnerability assessment 
+              by actively attacking flaws to determine their impact and the efficacy of current security solutions. Vulnerability assessment seeks to identify and 
+              categorize potential vulnerabilities like Broken access controls, SQL injection vulnarability, and etc...This VAPT assessment uses an automated and manual testing methodology that makes use of industry-standard tools 
+              including Burp Suite, Nmap and OWASP ZAP.</p>
+            
+          </div>
+          <div class="details-container color-container">
+            <h2 class="experience-sub-title project-title">Risk Mitigation Planning and Reporting</h2>
+            <p>The task was to explores the crucial procedures of risk planning and reporting, underscoring their 
+              significance in upholding a proactive approach towards uncertainties. Identifying possible risks, evaluating 
+              their impact and likelihood, and creating management or mitigation plans are all part of risk planning. However, 
+              risk reporting makes sure that all parties involved are aware of and in agreement by methodically recording and 
+              communicating risks that have been identified, their assessments, and the mitigation strategies that have been put in place.</p>
+          </div>
+
+            <!-- <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Live Demo
+              </button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="experience-details-container">
+        <div class="about-containers">
+
+          <div class="details-container color-container">
+            <h2 class="experience-sub-title project-title">The Gift Shop Digital Transformation</h2>
+            <p>Businesses from all industries are realizing how important it is to embrace digital transformation in the 
+              quickly changing digital landscape of today in order to remain relevant and competitive. The gift shop sector 
+              is not an anomaly. Once dependent on foot traffic, traditional gift stores now need to shift their focus to 
+              digital methods in order to match the increasing expectations of modern consumers, who want easy access, personalized experiences, 
+              and smooth online transactions. Digital marketing strategies and e-commerce platforms are being adopted as part of this transition.
+            </p>
+          </div>
+            
+            <div class="details-container color-container">
+              <h2 class="experience-sub-title project-title">Realtime Project with Scroobius</h2>
+              <p>We participated in an innovative project in collaboration with Scroobius, We are dedicated to conducting in-depth research, 
+                engaging in insightful interviews, and developing a draft website featuring advanced UX/UI elements, providing them with extra information in creating a 
+                dedicated client business connection webpage for their new business initiative.
+              </p>
+            </div>
+
+            <div class="details-container color-container">
+              <h2 class="experience-sub-title project-title">Pacman Game</h2>
+              <p>I created a modern version of the beloved Pac-Man arcade game. I was able to learn 
+                more about the fundamentals of game development—such as character control, AI behavior, 
+                collision detection, and user interface design—through this project. The result is a functional and entertaining version of Pac-Man that stays true to the original's charm. </p>
+            </div>
+
+          </div>
+          </div>
+
+          <div class="experience-details-container">
+            <div class="about-containers">
+    
+              <div class="details-container color-container">
+                <div class="article-container">
+                </div>
+                <h2 class="experience-sub-title project-title">Organ Donation Application with Continious Integration and Deployment using Jenkins</h2>
+                <p>Developed a robust organ donation application, implementing continuous integration and deployment through Jenkins. 
+                  The platform facilitates users and hospitals to request or donate organs, triggering notifications to relevant healthcare facilities.</p>
+                </div> 
+                
+                <div class="details-container color-container">
+                  <h2 class="experience-sub-title project-title">Home Automation</h2>
+                  <p>Engineered a home automation system using Arduino, enabling remote control of household appliances through a mobile phone. The application provide 
+                    enhanced control, automation, and management of various household systems and devices through a centralized network. 
+                    These systems can improve convenience, security and energy efficiency.</p>
+                </div>
+    
+                <div class="details-container color-container">
+                  <div class="article-container">
+                  </div>
+                  <h2 class="experience-sub-title project-title">Facial Emotion detection using CNN</h2>
+                  <p>Developed of a website capable of detecting user’s facial emotions and providing tailored responses or suggestions accordingly with an accuracy of ~95%</p>
+                  
+                </div> 
+    
+    
+              </div>
+              </div>
+
+      
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#contact'"
+      />
+    </section>
+
+
+    <section id="contact">
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="./assets/email.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="mailto:monishtejakolli@gmail.com">monishtejakolli@gmail.com</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p><a href="https://www.linkedin.com/in/monish-teja-kolli-ba717623a" target="_blank">LinkedIn - Monish Teja Kolli</a></p>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
