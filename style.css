@@ -445,3 +445,57 @@ footer p {
   object-fit: cover;
   margin-top: 15vh;
 }
+/* --- LIQUID GLASS / NEUMORPHISM STYLE --- */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: all 0.3s ease-in-out;
+}
+
+.glass-effect:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Apply to containers */
+.details-container,
+.color-container,
+.contact-info-upper-container,
+nav,
+#hamburger-nav .menu-links {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* General Page Background */
+body {
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  color: #000;
+}
+
+/* Updated Button */
+.btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  color: #000;
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  color: #111;
+}
+
+/* Optional - subtle card hover transform */
+.details-container:hover,
+.color-container:hover {
+  transform: translateY(-5px);
+}
