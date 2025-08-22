@@ -4,25 +4,643 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
+    <title>Monish Teja Kolli - Cybersecurity Professional</title>
+    <style>
+      /* GENERAL */
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+          radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      p {
+        color: rgb(55, 65, 85);
+      }
+
+      /* FROSTED GLASS EFFECTS */
+      .glass {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        will-change: transform;
+      }
+
+      .glass:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-5px) translateX(0);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      /* ANIMATIONS */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+
+      .slide-in-left {
+        animation: slideInLeft 0.8s ease-out forwards;
+      }
+
+      /* NAVIGATION SPECIFIC FIXES */
+      nav#desktop-nav {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%) !important;
+        z-index: 1000;
+        padding: 15px 30px;
+        width: 90%;
+        max-width: 800px;
+      }
+
+      nav#desktop-nav:hover {
+        transform: translateX(-50%) !important;
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Override glass effects for navigation */
+      nav.glass:hover {
+        transform: translateX(-50%) translateY(0) !important;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        font-size: 1.1rem;
+        justify-content: center;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+      }
+
+      .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: white;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      /* HAMBURGER MENU */
+      #hamburger-nav {
+        display: none;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
+      }
+
+      #hamburger-nav.glass {
+        transform: none !important;
+      }
+
+      #hamburger-nav.glass:hover {
+        transform: none !important;
+      }
+
+      .hamburger-menu {
+        position: relative;
+      }
+
+      .hamburger-icon {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 24px;
+        width: 30px;
+        cursor: pointer;
+        padding: 20px;
+      }
+
+      .hamburger-icon span {
+        width: 100%;
+        height: 2px;
+        background-color: white;
+        transition: all 0.3s ease;
+      }
+
+      .menu-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 15px;
+        width: 200px;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .menu-links.open {
+        max-height: 300px;
+        padding: 20px;
+      }
+
+      .menu-links a {
+        display: block;
+        padding: 10px;
+        color: #333;
+        font-weight: 500;
+      }
+
+      /* SECTIONS */
+      section {
+        padding: 100px 2rem 50px;
+        margin: 0 auto;
+        max-width: 1200px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      /* PROFILE SECTION */
+      #profile {
+        text-align: center;
+        padding-top: 150px;
+      }
+
+      .profile-container {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .profile-pic {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid rgba(255, 255, 255, 0.3);
+        animation: pulse 3s infinite;
+      }
+
+      .profile-text {
+        text-align: left;
+        color: white;
+        max-width: 600px;
+      }
+
+      .profile-text h1 {
+        font-size: 3.5rem;
+        margin-bottom: 10px;
+        background: linear-gradient(45deg, #fff, #e0e7ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .profile-text .subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .profile-text .description {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 30px;
+      }
+
+      /* BUTTONS */
+      .btn-container {
+        display: flex;
+        gap: 1rem;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 15px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn-primary {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .btn-primary:hover {
+        background: white;
+        color: #667eea;
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+      }
+
+      /* CARDS AND CONTAINERS */
+      .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+        width: 100%;
+      }
+
+      .card {
+        padding: 30px;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card:hover {
+        transform: translateY(-5px) translateX(0) !important;
+      }
+
+      /* CONTENT SECTIONS */
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: white;
+        margin-bottom: 50px;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+      }
+
+      /* EXPERIENCE SECTION */
+      .experience-item {
+        margin-bottom: 30px;
+        padding: 25px;
+        border-left: 4px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .experience-item h3 {
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+      }
+
+      .experience-item .company {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+      }
+
+      .experience-item .date {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+
+      .experience-item ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .experience-item li {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 8px;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .experience-item li:before {
+        content: "▶";
+        position: absolute;
+        left: 0;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .card h3 {
+        color: white;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+      }
+
+      .card p {
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.6;
+      }
+
+      /* SKILLS SECTION */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        margin-top: 30px;
+        width: 100%;
+      }
+
+      .skill-category {
+        padding: 25px;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+      }
+
+      .skill-category:hover {
+        transform: translateY(-5px) translateX(0) !important;
+      }
+
+      .skill-category h3 {
+        color: white;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .skill-tag {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .skill-tag:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.05);
+      }
+
+      /* CONTACT SECTION */
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        width: 100%;
+      }
+
+      .contact-item {
+        padding: 20px 30px;
+        text-align: center;
+        min-width: 200px;
+        box-sizing: border-box;
+        flex: 0 1 auto;
+        position: relative;
+      }
+
+      .contact-item:hover {
+        transform: translateY(-5px) translateX(0) !important;
+      }
+
+      .contact-item a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.1rem;
+      }
+
+      .contact-item a:hover {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      /* RESPONSIVE DESIGN */
+      @media screen and (max-width: 1200px) {
+        #desktop-nav {
+          display: none;
+        }
+        #hamburger-nav {
+          display: block;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .profile-container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .profile-text {
+          text-align: center;
+        }
+
+        .profile-text h1 {
+          font-size: 2.5rem;
+        }
+
+        section {
+          padding: 80px 1rem 40px;
+        }
+
+        .cards-container {
+          grid-template-columns: 1fr;
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-info {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      /* FLOATING ELEMENTS */
+      .floating-shapes {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .shape {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 50%;
+        animation: float 8s ease-in-out infinite;
+        backdrop-filter: blur(1px);
+      }
+
+      .shape:nth-child(1) {
+        width: 200px;
+        height: 200px;
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+        background: radial-gradient(circle, rgba(120, 119, 198, 0.1) 0%, transparent 70%);
+      }
+
+      .shape:nth-child(2) {
+        width: 150px;
+        height: 150px;
+        top: 50%;
+        right: 15%;
+        animation-delay: 3s;
+        background: radial-gradient(circle, rgba(255, 119, 198, 0.08) 0%, transparent 70%);
+      }
+
+      .shape:nth-child(3) {
+        width: 100px;
+        height: 100px;
+        bottom: 20%;
+        left: 20%;
+        animation-delay: 6s;
+        background: radial-gradient(circle, rgba(120, 219, 255, 0.06) 0%, transparent 70%);
+      }
+
+      .shape:nth-child(4) {
+        width: 80px;
+        height: 80px;
+        top: 30%;
+        left: 60%;
+        animation-delay: 2s;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
+      }
+
+      .shape:nth-child(5) {
+        width: 120px;
+        height: 120px;
+        bottom: 40%;
+        right: 30%;
+        animation-delay: 4s;
+        background: radial-gradient(circle, rgba(83, 52, 131, 0.08) 0%, transparent 70%);
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        33% {
+          transform: translateY(-30px) rotate(120deg);
+        }
+        66% {
+          transform: translateY(-10px) rotate(240deg);
+        }
+      }
+    </style>
   </head>
   
   <body>
-    <nav id="desktop-nav">
+    <!-- Floating background shapes -->
+    <div class="floating-shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+
+    <nav id="desktop-nav" class="glass">
       <div class="logo">Monish Teja Kolli</div>
       <div>
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
     </nav>
+
     <nav id="hamburger-nav">
-      <div class="logo">Monish Teja Kolli</div>
       <div class="hamburger-menu">
         <div class="hamburger-icon" onclick="toggleMenu()">
           <span></span>
@@ -32,532 +650,272 @@
         <div class="menu-links">
           <li><a href="#about" onclick="toggleMenu()">About</a></li>
           <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
           <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
           <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
         </div>
       </div>
     </nav>
+
     <section id="profile">
-      <div class="section__pic-container">
-        <img src="./assets/profilepic.jpg" class="picture" alt="profile picture" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Monish Teja Kolli</h1>
-        <p class="section__text__p2">Cyber Security Specialist</p>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/Monish Teja Kolli resume.pdf')"
-          >
-            Download CV
-          </button>
-          <!-- <button class="btn btn-color-1" onclick="location.href='#contact'">
-            Contact Info
-          </button> -->
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon linkedin"
-            onclick="location.href='https://www.linkedin.com/in/monish-teja-kolli-ba717623a'"
-          />
+      <div class="profile-container fade-in-up">
+        <img src="./assets/profilepic.jpg" class="profile-pic" alt="Monish Teja Kolli" />
+        <div class="profile-text">
+          <h1>Monish Teja Kolli</h1>
+          <p class="subtitle">Cybersecurity Professional</p>
+          <p class="description">
+            Detail-oriented Cyber Security professional with 3+ years of experience protecting enterprise environments across on-prem and cloud (AWS/Azure). Proven track record building SIEM detections, tuning EDR, automating incident response, and driving measurable risk reduction through advanced security operations and threat hunting.
+          </p>
+          <div class="btn-container">
+            <a href="./assets/Monish Teja Kolli resume.pdf" class="btn btn-primary" target="_blank">Download Resume</a>
+            <a href="https://www.linkedin.com/in/monish-teja-kolli-ba717623a" class="btn btn-secondary" target="_blank">LinkedIn Profile</a>
+          </div>
         </div>
-        <!-- <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.linkedin.com/in/monish-teja-kolli-ba717623a'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/'"
-          />
-        </div> -->
       </div>
     </section>
+
     <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
-        <!-- <div class="section__pic-container">
-          <img
-            src="./assets/security.png"
-            alt="Profile picture"
-            class="about-pic"
-          />
-        </div> -->
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Experience</h3>
-              <p> Internships <br />West Advanced Technologies Inc (WATI) - Security Analyst and Penetration Testing Intern <br><br /> Terra Automation - Electronics and Robotics Intern</p>
-            </div>
-            <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Education</h3>
-              <p>B.Tech Computer Science and Engineering <br/>(GITAM Deemed to be University)<br/><br/>Master's in Informatics - Information Security Management <br/>(Northeastern University)</p>
-            </div>
-          </div>
-          <div class="text-container">
-            <p>
-              Passionate <b>Computer Science and informatics specialist </b> with focus on <b>Cyber security </b> adept at creating innovative techniques, 
-              and making them robust and scalable. Skilled in multiple technologies, and Risk mitigation techniques Highly motivated and results-driven, 
-              with the capacity to work and grow in a committed team. Completed an internship as Security Analyst and Penetration Testing Intern at WATI.
-            </p>
-          </div>
+      <h2 class="section-title fade-in-up">About Me</h2>
+      <div class="cards-container">
+        <div class="card glass fade-in-up">
+          <h3>🎓 Education</h3>
+          <p><strong>Master's in Informatics</strong><br>Information Security & Management<br>Northeastern University, Boston<br><br><strong>Bachelor's in Computer Science</strong><br>GITAM Deemed University, India</p>
+        </div>
+        <div class="card glass fade-in-up">
+          <h3>🏆 Certifications</h3>
+          <p>• Google Cybersecurity Specialization<br>• CompTIA Security+ (SY0-701)<br>• ISC2 Cyber Security<br>• Multiple cloud security certifications</p>
+        </div>
+        <div class="card glass fade-in-up">
+          <h3>💼 Specializations</h3>
+          <p>• SIEM Engineering & Threat Hunting<br>• Cloud Security (AWS/Azure)<br>• Incident Response & Automation<br>• Vulnerability Management<br>• Compliance (SOC 2, ISO 27001, HIPAA)</p>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
     </section>
+
     <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Experience</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Technical Skills</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Python</h3>
-                  <!-- <p>Experienced</p> -->
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>HTML</h3>
-                  <!-- <p>Experienced</p> -->
-                </div>
-              </article><br/>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>CSS</h3>
-                  <!-- <p>Intermediate</p> -->
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>JavaScript</h3>
-                  <!-- <p>Basic</p> -->
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Amazon AWS </h3>
-                  <!-- <p>Basic</p> -->
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>MY SQL</h3>
-                  <!-- <p>Intermediate</p> -->
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Penetration Testing Tools</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Kali linux</h3>
-                  <!-- <p>Basic</p> -->
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Brup Suit</h3>
-                  <!-- <p>Intermediate</p> -->
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Metasploit</h3>
-                  <!-- <p>Intermediate</p> -->
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>ZAP</h3>
-                  <!-- <p>Intermediate</p> -->
-                </div>
-              </article><br/>
-
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Nmap</h3>
-                  <!-- <p>Intermediate</p> -->
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Wireshark</h3>
-                  <!-- <p>Intermediate</p> -->
-                </div>
-              </article>
-            </div>
-          </div> 
-
-          <div class="details-container">
-            <h2 class="experience-sub-title">Security Frameworks</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>NIST CSF</h3>
-                  <!-- <p>Experienced</p> -->
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>ISO 2700</h3>
-                  <!-- <p>Experienced</p> -->
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>OWASP</h3>
-                  <!-- <p>Intermediate</p> -->
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Security risk management</h3>
-                  <!-- <p>Basic</p> -->
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Fundamentals of Cyber laws </h3>
-                  <!-- <p>Basic</p> -->
-                </div>
-              </article>
-            </div>
-          </div>
-
-
-          <div class="details-container">
-            <h2 class="experience-sub-title">Engineering Skills</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Software development methologies</h3>
-                  <!-- <p>Experienced</p> -->
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Software testing methologies</h3>
-                  <!-- <p>Experienced</p> -->
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Optimization techniques</h3>
-                  <!-- <p>Intermediate</p> -->
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Engineering Economics and management</h3>
-                  <!-- <p>Basic</p> -->
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
-    </section>
-    <section id="projects">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <h2 class="experience-sub-title project-title">AWS Cloud Secuirty Architecture</h2>
-            <p>The aim was to fortify Flipkart's security infrastructure, we leverage NIST CSF and Amazon Web Services (AWS) as the cornerstone for creating a 
-              thorough security plan for Flipkart. To improve web application's security posture and defend against 
-              various cyberthreats, AWS provides an array of potent security tools and services. By utilizing 
-              these technologies, we hope to develop a security architecture that not only fixes the flaws brought 
-              to light by the 2021 hack, but also foresees and reduces such threats in the future.
-               By addressing the vulnerabilities that led to the 2021 breach and implementing a proactive security strategy, 
-               we seek to enhance Flipkart's resilience against future cyber threats.</p>
-            
-          </div>
-          <div class="details-container color-container">
-            <h2 class="experience-sub-title project-title">Web application VAPT assesment</h2>
-            <p>The primary target was to Perform a vulnerability assessment and penetration testing (VAPT) on a web application to identify and mitigate potential risks. 
-              A thorough method for finding, evaluating, and addressing security flaws in a web application is called VAPT. Penetration testing goes beyond vulnerability assessment 
-              by actively attacking flaws to determine their impact and the efficacy of current security solutions. Vulnerability assessment seeks to identify and 
-              categorize potential vulnerabilities like Broken access controls, SQL injection vulnarability, and etc...This VAPT assessment uses an automated and manual testing methodology that makes use of industry-standard tools 
-              including Burp Suite, Nmap and OWASP ZAP.</p>
-            
-          </div>
-          <div class="details-container color-container">
-            <h2 class="experience-sub-title project-title">Risk Mitigation Planning and Reporting</h2>
-            <p>The task was to explores the crucial procedures of risk planning and reporting, underscoring their 
-              significance in upholding a proactive approach towards uncertainties. Identifying possible risks, evaluating 
-              their impact and likelihood, and creating management or mitigation plans are all part of risk planning. However, 
-              risk reporting makes sure that all parties involved are aware of and in agreement by methodically recording and 
-              communicating risks that have been identified, their assessments, and the mitigation strategies that have been put in place.</p>
-          </div>
-
-            <!-- <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
-            </div> -->
-          </div>
-        </div>
-      </div>
-
-      <div class="experience-details-container">
-        <div class="about-containers">
-
-          <div class="details-container color-container">
-            <h2 class="experience-sub-title project-title">The Gift Shop Digital Transformation</h2>
-            <p>Businesses from all industries are realizing how important it is to embrace digital transformation in the 
-              quickly changing digital landscape of today in order to remain relevant and competitive. The gift shop sector 
-              is not an anomaly. Once dependent on foot traffic, traditional gift stores now need to shift their focus to 
-              digital methods in order to match the increasing expectations of modern consumers, who want easy access, personalized experiences, 
-              and smooth online transactions. Digital marketing strategies and e-commerce platforms are being adopted as part of this transition.
-            </p>
-          </div>
-            
-          <div class="details-container color-container">
-            <h2 class="experience-sub-title project-title">Keylogger using Python</h2>
-            <p>Developed a custom keylogger in Python aimed at automating keystroke logging for cybersecurity research. 
-              The project involved using libraries like pynput to capture keyboard inputs and implementing real-time 
-              monitoring with automated email-based reporting. Integrated gnupg to encrypt log data for secure storage and 
-              utilized the Gmail API to periodically send encrypted logs via email, ensuring secure communication through OAuth 2.0 authentication. 
-              The keylogger was designed as a seamless, background-running application, emphasizing ethical considerations and serving as a tool 
-              for understanding malware behavior and anti-detection techniques. This project provided hands-on experience with security tool development, 
-              penetration testing, Python programming, and system-level automation, highlighting skills in data encryption and secure authentication.
-            </p>
-          </div>
-
-            <div class="details-container color-container">
-              <h2 class="experience-sub-title project-title">E-Commers Website Design and Developement</h2>
-              <p>I built an e-commerce website from scratch, taking a full-stack approach to development. 
-                The project involved creating a responsive E-Commers website. It included customer support and vendor support features, 
-                managing the product catalog, and facilitating the seller selection process. I also integrated a secure payment gateway and 
-                ensured the website's security through input validation, data encryption, and best practices, providing a user-friendly and 
-                secure platform.
-              </p>
-            </div>
-
-          </div>
-          </div>
-
-          <div class="experience-details-container">
-            <div class="about-containers">
-    
-              <div class="details-container color-container">
-                <h2 class="experience-sub-title project-title">Realtime Project with Scroobius</h2>
-                <p>We participated in an innovative project in collaboration with Scroobius, We are dedicated to conducting in-depth research, 
-                  engaging in insightful interviews, and developing a draft website featuring advanced UX/UI elements, providing them with extra information in creating a 
-                  dedicated client business connection webpage for their new business initiative.
-                </p>
-              </div>
-
-              <div class="details-container color-container">
-                <div class="article-container">
-                </div>
-                <h2 class="experience-sub-title project-title">Organ Donation Application with Continious Integration and Deployment using Jenkins</h2>
-                <p>Developed a robust organ donation application, implementing continuous integration and deployment through Jenkins. 
-                  The platform facilitates users and hospitals to request or donate organs, triggering notifications to relevant healthcare facilities.</p>
-                </div> 
-                
-                <div class="details-container color-container">
-                  <h2 class="experience-sub-title project-title">Home Automation</h2>
-                  <p>Engineered a home automation system using Arduino, enabling remote control of household appliances through a mobile phone. The application provide 
-                    enhanced control, automation, and management of various household systems and devices through a centralized network. 
-                    These systems can improve convenience, security and energy efficiency.</p>
-                </div>
-
-              </div>
-              </div>
-
-      
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
-    </section>
-
-
-    <section id="contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:monishtejakolli@gmail.com">monishtejakolli@gmail.com</a></p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href="https://www.linkedin.com/in/monish-teja-kolli-ba717623a" target="_blank">LinkedIn - Monish Teja Kolli</a></p>
-        </div>
-      </div>
-    </section>
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+      <h2 class="section-title">Professional Experience</h2>
+      <div class="glass" style="padding: 30px;">
+        <div class="experience-item slide-in-left">
+          <h3>Cyber Security Analyst</h3>
+          <div class="company">DXC Technology | USA</div>
+          <div class="date">January 2024 – Present</div>
+          <ul>
+            <li>Engineered SIEM detections in Splunk and Microsoft Sentinel, improving true-positive rate by 31%</li>
+            <li>Built SOAR playbooks reducing MTTR from 3.6h → 45m through automated incident response</li>
+            <li>Led threat hunting sprints using MITRE ATT&CK, identifying credential-stuffing campaigns</li>
+            <li>Implemented cloud security posture management, closing 200+ misconfigurations</li>
+            <li>Drove vulnerability management achieving 92% on-time remediation</li>
+            <li>Embedded DevSecOps security scanning, blocking 32 vulnerable packages pre-production</li>
+            <li>Reduced data exposure incidents by 70% through DLP implementation</li>
           </ul>
         </div>
-      </nav>
-    </footer>
-    <script src="script.js"></script>
+
+        <div class="experience-item slide-in-left">
+          <h3>Associate Security Engineer</h3>
+          <div class="company">Mphasis | India</div>
+          <div class="date">October 2021 – August 2023</div>
+          <ul>
+            <li>Operated 24×7 SOC functions covering phishing, EDR alerts, and network threats</li>
+            <li>Deployed Azure Sentinel connectors and analytics, reducing alerts by 35%</li>
+            <li>Implemented Zero Trust network segmentation and NGFW policies</li>
+            <li>Supported DevSecOps adoption with secret scanning and container security</li>
+            <li>Built phishing simulation program, reducing click-rate from 14% → 3.2%</li>
+            <li>Performed risk assessments for SOC 2 and ISO 27001 compliance</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Technical Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-category glass">
+          <h3>Security Operations</h3>
+          <div class="skills-list">
+            <span class="skill-tag">Splunk</span>
+            <span class="skill-tag">Azure Sentinel</span>
+            <span class="skill-tag">CrowdStrike</span>
+            <span class="skill-tag">QRadar</span>
+            <span class="skill-tag">SOAR</span>
+            <span class="skill-tag">Threat Hunting</span>
+            <span class="skill-tag">Incident Response</span>
+          </div>
+        </div>
+
+        <div class="skill-category glass">
+          <h3>Cloud & Identity</h3>
+          <div class="skills-list">
+            <span class="skill-tag">AWS Security Hub</span>
+            <span class="skill-tag">GuardDuty</span>
+            <span class="skill-tag">Azure Defender</span>
+            <span class="skill-tag">IAM</span>
+            <span class="skill-tag">Okta</span>
+            <span class="skill-tag">SSO/SAML</span>
+            <span class="skill-tag">KMS</span>
+          </div>
+        </div>
+
+        <div class="skill-category glass">
+          <h3>Vulnerability Management</h3>
+          <div class="skills-list">
+            <span class="skill-tag">Nessus</span>
+            <span class="skill-tag">Qualys</span>
+            <span class="skill-tag">OpenVAS</span>
+            <span class="skill-tag">CIS Benchmarks</span>
+            <span class="skill-tag">NIST 800-53</span>
+            <span class="skill-tag">OWASP Top 10</span>
+          </div>
+        </div>
+
+        <div class="skill-category glass">
+          <h3>Network Security</h3>
+          <div class="skills-list">
+            <span class="skill-tag">Palo Alto</span>
+            <span class="skill-tag">Fortinet</span>
+            <span class="skill-tag">Snort/Suricata</span>
+            <span class="skill-tag">WAF</span>
+            <span class="skill-tag">TLS/PKI</span>
+            <span class="skill-tag">VPN</span>
+          </div>
+        </div>
+
+        <div class="skill-category glass">
+          <h3>DevSecOps & Automation</h3>
+          <div class="skills-list">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">PowerShell</span>
+            <span class="skill-tag">Terraform</span>
+            <span class="skill-tag">GitHub Actions</span>
+            <span class="skill-tag">Jenkins</span>
+            <span class="skill-tag">TruffleHog</span>
+          </div>
+        </div>
+
+        <div class="skill-category glass">
+          <h3>Compliance & Governance</h3>
+          <div class="skills-list">
+            <span class="skill-tag">SOC 2</span>
+            <span class="skill-tag">ISO 27001</span>
+            <span class="skill-tag">HIPAA</span>
+            <span class="skill-tag">PCI DSS</span>
+            <span class="skill-tag">Risk Assessment</span>
+            <span class="skill-tag">DLP</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">Key Projects</h2>
+      <div class="cards-container">
+        <div class="card glass">
+          <h3>🔐 AWS Cloud Security Architecture</h3>
+          <p>Comprehensive security plan leveraging NIST CSF and AWS services to fortify e-commerce infrastructure, addressing vulnerabilities and implementing proactive threat mitigation strategies.</p>
+        </div>
+
+        <div class="card glass">
+          <h3>🕵️ Web Application VAPT Assessment</h3>
+          <p>Complete vulnerability assessment and penetration testing using Burp Suite, Nmap, and OWASP ZAP to identify and mitigate security flaws including SQL injection and broken access controls.</p>
+        </div>
+
+        <div class="card glass">
+          <h3>📊 Risk Mitigation & Reporting Framework</h3>
+          <p>Developed comprehensive risk planning and reporting procedures, including risk identification, impact assessment, and systematic documentation of mitigation strategies.</p>
+        </div>
+
+        <div class="card glass">
+          <h3>🛡️ Enterprise Security Automation</h3>
+          <p>Built Python-based keylogger for cybersecurity research with encrypted logging, automated email reporting, and OAuth 2.0 authentication for secure data transmission.</p>
+        </div>
+
+        <div class="card glass">
+          <h3>🏪 Digital Transformation Security</h3>
+          <p>Led security architecture for retail digital transformation, implementing e-commerce security controls, payment gateway protection, and comprehensive security best practices.</p>
+        </div>
+
+        <div class="card glass">
+          <h3>🏠 IoT Security Implementation</h3>
+          <p>Engineered secure home automation system using Arduino with mobile control, focusing on IoT device security, network segmentation, and encrypted communications.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-subtitle">Ready to collaborate on cybersecurity initiatives</p>
+      <div class="contact-info">
+        <div class="contact-item glass">
+          <h3>📧 Email</h3>
+          <a href="mailto:monishtejakolli@gmail.com">monishtejakolli@gmail.com</a>
+        </div>
+        <div class="contact-item glass">
+          <h3>💼 LinkedIn</h3>
+          <a href="https://www.linkedin.com/in/monish-teja-kolli-ba717623a" target="_blank">Connect with me</a>
+        </div>
+        <div class="contact-item glass">
+          <h3>📍 Location</h3>
+          <p style="color: white;">Boston, Massachusetts, USA</p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.querySelector(".menu-links");
+        const icon = document.querySelector(".hamburger-icon");
+        menu.classList.toggle("open");
+        icon.classList.toggle("open");
+      }
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observe elements for animation
+      document.addEventListener('DOMContentLoaded', () => {
+        const animatedElements = document.querySelectorAll('.fade-in-up, .slide-in-left');
+        animatedElements.forEach(el => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(50px)';
+          el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+          observer.observe(el);
+        });
+
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          });
+        });
+      });
+
+      // Add parallax effect to floating shapes
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const shapes = document.querySelectorAll('.shape');
+        shapes.forEach((shape, index) => {
+          const speed = 0.5 + (index * 0.1);
+          shape.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+      });
+    </script>
   </body>
 </html>
